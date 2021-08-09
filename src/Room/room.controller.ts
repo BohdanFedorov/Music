@@ -22,7 +22,7 @@ export class RoomController {
         return this.roomService.connectToRoom(connectToRoomDto)
     }
 
-    @Post()
+    @Post('create')
     @ApiResponse({ status: 201, description: 'The room created' })
     async createRoom(@Body() createRoomDto: CreateRoomDto): Promise<Room> {
         return this.roomService.createNewRoom(createRoomDto)
