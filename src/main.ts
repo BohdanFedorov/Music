@@ -14,10 +14,9 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   
-  await app.listen(port,() => console.log(`
+  await app.listen(port,() => console.info(`
   The server has been started on http://localhost:${port}/
   You can see API doc on http://localhost:${port}/api/
-  `));
-  
+  `)).catch(e=>console.error(e));
 }
 bootstrap();
