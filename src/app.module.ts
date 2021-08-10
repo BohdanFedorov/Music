@@ -5,6 +5,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { User } from './User/schema/user.schema';
 import { UserModule } from './User/user.module';
 import { Room } from './Room/schema/room.schema';
+import { ContentsModule } from './contents/contents.module';
+import { Contents } from './contents/schema/content.schema';
+
 
 @Module({
   imports: [
@@ -13,9 +16,10 @@ import { Room } from './Room/schema/room.schema';
     }),
     MongooseModule.forRoot(process.env.DB_URL),
     UserModule,
-    RoomModule
+    RoomModule,
+    ContentsModule
   ],
   controllers: [],
-  providers: [User, Room],
+  providers: [User, Room,Contents],
 })
 export class AppModule { }
