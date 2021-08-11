@@ -1,23 +1,25 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, ObjectId, Types } from 'mongoose';
+import { Document } from 'mongoose';
+import { User } from 'src/User/schema/user.schema';
 import { ContentsStatus, ContentsTypes } from '../contents.types';
+import { IContents } from '../dto/content.dto';
 
 
 
 export type ContentsDoc = Contents & Document;
 
 @Schema({ autoIndex: true })
-export class Contents {
-    @Prop({ type: String })
-    path: string
-    @Prop({ type: ContentsTypes })
+export class Contents implements IContents {
+    @Prop({ type: String, required: true })
+    url: URL
+    @Prop({ type: ContentsTypes, required: false })
     type: ContentsTypes
-    @Prop({ type: Date })
+    @Prop({ type: Date, required: true })
     date: Date
-    @Prop({ type: String })
+    @Prop({ type: String, required: false })
     name: string
-    @Prop({ type: Types.ObjectId })
-    supplier: ObjectId
+    @Prop({ type: User, required: true })
+    supplier: User
     @Prop({ type: ContentsStatus })
     status: ContentsStatus
 }

@@ -8,6 +8,9 @@ export enum ContentsTypes {
     ogv = 'video/ogg',
     webm = 'video/webm',
     webmv = 'video/webm',
+    wwwyoutubecom = 'youtube',
+    musicyoutubecom = 'musicyoutubecom',
+    default = 'unknown'
 }
 export enum ContentsStatus {
     viewed,
