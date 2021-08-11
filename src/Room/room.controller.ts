@@ -16,13 +16,13 @@ export class RoomController {
         return this.roomService.findOpenRoom()
     }
 
-    @Get('connectToRoom')
+    @Post('connect')
     @ApiResponse({ status: 200, description: 'Return room' })
     async connectToRoom(@Body() connectToRoomDto: ConnectToRoomDto): Promise<Room> {
         return this.roomService.connectToRoom(connectToRoomDto)
     }
 
-    @Post('create')
+    @Post()
     @ApiResponse({ status: 201, description: 'The room created' })
     async createRoom(@Body() createRoomDto: CreateRoomDto): Promise<Room> {
         return this.roomService.createNewRoom(createRoomDto)
